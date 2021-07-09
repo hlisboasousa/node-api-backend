@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
-const DepartmentSchema = require('./department')
+const Schema = mongoose.Schema;
 
 const CollaboratorSchema = mongoose.Schema({
     name: { type: String },
     birthDate: { type: Date },
     wage: { type: Number },
-    isActive: { type: Boolean },
-    department: { type: String }
-    }
-);
+    isActive: { type: Boolean, default: true },
+    department : { type: Schema.Types.ObjectId, ref: 'department' },
+});
 
-module.exports = mongoose.model('Collaborator', CollaboratorSchema);
+
+module.exports = mongoose.model('collaborator', CollaboratorSchema);
