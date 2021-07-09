@@ -14,7 +14,13 @@ class CollaboratorController {
 
   async fetch(req, res) {
     try {
-      const collaborators = await Collaborator.find({});
+      const filter = JSON.parse(req.query.filter);
+      let search = '';
+      if(filter.search) {
+        search = filter.search;
+      }
+
+      const collaborators = await Collaborator.find({ name: {$regex : search, $options: 'i'}}).populate('department', 'name');
       res.status(200).send(collaborators);
 
     } catch (error) {
@@ -24,7 +30,8 @@ class CollaboratorController {
 
   async getOne(req, res) {
     try {
-      const collaborator = await Collaborator.findById(req.params.id);
+      const id = req.params.id;
+      const collaborator = await Collaborator.findById(id).populate('department', 'name');
       res.status(200).send(collaborator);
 
     } catch (error) {
@@ -36,9 +43,7 @@ class CollaboratorController {
     try {
       const id = req.params.id;
       await Collaborator.findByIdAndUpdate(id, req.body);
-      const collaboratorToUpdate = await Collaborator.findById(id);
-
-      res.status(200).send({ data: { id }});
+      res.status(200).send({ data: { id } });
 
     } catch (error) {
       res.status(500).send(error);

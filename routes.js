@@ -1,7 +1,7 @@
 const CollaboratorController = require('./api/collaborator-controller');
 const DepartmentController = require("./api/department-controller");
 
-module.exports = (app) => {    
+module.exports = (app) => {
     app.post('/collaborator', CollaboratorController.create);
     app.get('/collaborator', CollaboratorController.fetch);
     app.get('/collaborator/:id', CollaboratorController.getOne);

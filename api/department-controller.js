@@ -4,6 +4,7 @@ class DepartmentController {
 
   async create(req, res) {
     try {
+      console.log(req.body)
       const department = await Department.create(req.body);
       res.status(201).send(department);
 
@@ -14,7 +15,13 @@ class DepartmentController {
 
   async fetch(req, res) {
     try {
-      const departments = await Department.find({});
+      const filter = JSON.parse(req.query.filter);
+      let search = '';
+      if(filter.search) {
+        search = filter.search;
+      }
+      
+      const departments = await Department.find({ name: {$regex : search, $options: 'i'}});
       res.status(200).send(departments);
 
     } catch (error) {
@@ -36,7 +43,7 @@ class DepartmentController {
     try {
       const id = req.params.id;
       await Department.findByIdAndUpdate(id, req.body);
-      const departmentToUpdate = await Department.findById(id);
+      await Department.findById(id);
 
       res.status(200).send({ data: { id }});
 
