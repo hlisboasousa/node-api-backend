@@ -1,4 +1,4 @@
-# API REST - RocketMat recruit
+# API REST - RocketMat Recruit Test
 
 This project consist on a simple API rest for manipulating registers of departments and collaborators of a company.
 It is developed using NodeJs and utilizes the Mongodb Altas service for database storage.
