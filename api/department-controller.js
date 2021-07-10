@@ -43,8 +43,6 @@ class DepartmentController {
     try {
       const id = req.params.id;
       await Department.findByIdAndUpdate(id, req.body);
-      await Department.findById(id);
-
       res.status(200).send({ data: { id }});
 
     } catch (error) {
