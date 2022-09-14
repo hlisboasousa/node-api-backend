@@ -1,7 +1,7 @@
 # API REST - Recruit Test
 
 This project consists on a simple API rest for manipulating registers of departments and collaborators of a company.
-It is developed using NodeJs and utilizes Mongodb Altas service for database storage.
+It is developed using NodeJs and Mongodb Altas service for database storage.
 
 - Require: node version > 14.
 - Link to React-admin frontend developed for this application: https://github.com/hlisboasousa/rocketmat-frontend
