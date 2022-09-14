@@ -1,6 +1,6 @@
 # API REST - Recruit Test
 
-This project consist on a simple API rest for manipulating registers of departments and collaborators of a company.
+This project consists on a simple API rest for manipulating registers of departments and collaborators of a company.
 It is developed using NodeJs and utilizes Mongodb Altas service for database storage.
 
 - Require: node version > 14.
